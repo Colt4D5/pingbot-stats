@@ -1,9 +1,9 @@
 import sqlite3 from 'sqlite3'
 const connection = sqlite3.verbose();
 import moment from 'moment';
-const date = moment().format("YYYY-MM-DD");
+import { DB_PATH } from '$env/static/private';
 
-const db = new connection.Database('/Users/colton/Documents/Work Stuff/Pingy/test.sqlite');
+const db = new connection.Database(DB_PATH);
   
 const today = new Date();
 const year = today.getFullYear();

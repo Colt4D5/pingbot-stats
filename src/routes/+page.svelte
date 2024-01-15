@@ -1,9 +1,7 @@
 <script lang="ts">
   import * as Table from "$lib/components/ui/table";
   import LineChart from "$lib/components/LineChart.svelte";
-  import { goto } from "$app/navigation";
   import Countup from "svelte-countup";
-  import moment from 'moment';
 
   export let data;
 
