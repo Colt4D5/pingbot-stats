@@ -27,10 +27,11 @@ export const load = (async ({  }) => {
   // last scan
   let previousScanPings: number = 0
   const previousScan = await getPrevScanData();
+  previousScanPings = previousScan[previousScan.length - 1].pings;
 
-  previousScan.forEach(scan => {
-    previousScanPings += scan.pings;
-  })
+  // previousScan.forEach(scan => {
+  //   previousScanPings += scan.pings;
+  // })
 
   // Most common issues
   let commonIssuesArr: string[] = []
@@ -48,7 +49,7 @@ export const load = (async ({  }) => {
   }, {});
 
   // This month
-  const pingsThisMonth = commonIssues.length;
+  const pingsThisMonth = previousScan.reduce((acc, val) => acc += val.pings, 0);
 
   // most recent pings
   const mostRecent = commonIssues.slice(0, 12)
